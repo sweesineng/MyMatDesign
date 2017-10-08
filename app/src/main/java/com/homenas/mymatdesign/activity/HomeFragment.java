@@ -6,6 +6,7 @@ package com.homenas.mymatdesign.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,8 +17,9 @@ import android.view.ViewGroup;
 
 import com.homenas.mymatdesign.R;
 import com.homenas.mymatdesign.adapter.ListAdapter;
-import com.homenas.mymatdesign.model.NavDrawerItem;
+import com.homenas.mymatdesign.model.HomeDrawerItem;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,16 +33,18 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static List<NavDrawerItem> getData() {
-        List<NavDrawerItem> data = new ArrayList<>();
+    public static List<HomeDrawerItem> getData() {
+        List<HomeDrawerItem> data = new ArrayList<>();
 
-        // preparing navigation drawer items
-        for (int i = 0; i < titles.length; i++) {
-            NavDrawerItem navItem = new NavDrawerItem();
-            navItem.setTitle(titles[i]);
-            Log.i("HomeFragment", navItem.getTitle().toString());
-            data.add(navItem);
+        File root = new File(Environment.getExternalStorageDirectory().toString());
+        File[] files = root.listFiles();
+        for (File file : files) {
+            HomeDrawerItem homeItem = new HomeDrawerItem();
+            homeItem.setTitle(file.getName());
+            data.add(homeItem);
+            Log.i("Recyclerview", "list: " + file.getName());
         }
+
         return data;
     }
 
