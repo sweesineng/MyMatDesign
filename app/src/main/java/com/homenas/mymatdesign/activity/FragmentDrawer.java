@@ -18,16 +18,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.homenas.mymatdesign.R;
 import com.homenas.mymatdesign.adapter.NavigationDrawerAdapter;
 import com.homenas.mymatdesign.model.NavDrawerItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FragmentDrawer extends Fragment {
 
-    private static String TAG = FragmentDrawer.class.getSimpleName();
+    //private static String TAG = FragmentDrawer.class.getSimpleName();
 
     private RecyclerView recyclerView;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -47,7 +47,6 @@ public class FragmentDrawer extends Fragment {
 
     public static List<NavDrawerItem> getData() {
         List<NavDrawerItem> data = new ArrayList<>();
-
 
         // preparing navigation drawer items
         for (int i = 0; i < titles.length; i++) {
